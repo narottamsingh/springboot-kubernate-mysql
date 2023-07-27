@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: springboot-kubernate-mysql-app
+  name: springboot-kubernate-mysql-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-kubernate-mysql-app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: springboot-kubernate-mysql-app
+    spec:
+      containers:
+      - image: springbootmysql:latest
+        name: springboot-kubernate-mysql-app-container
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m 
+           
